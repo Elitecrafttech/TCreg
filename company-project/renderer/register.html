@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="../renderer/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
+    
+    <title>REGISTER</title>
+</head>
+<body>
+    <main class="main-reg">
+        <div class="sft">Register New Person Into The Software</div>
+
+        <div class="form">
+           <div class="form-div">
+
+            <label class="namelab" for=""> <div class="">Name :</div>
+                <input class="userName" type="text" name="name" id="" placeholder="Enter Name"> 
+            </label>
+
+            <label class="emailab" for=""> <div class="">Email :</div>
+                <input class="userEmail" type="text" name="email" id="" placeholder="Enter Email">
+            </label>
+
+            <label class="phonelab" for="">  <div class="">Phone :</div>
+                <input class="userPhone bg-[#d9d9d9] border py-[10px] px-[20px] w-[27vw] rounded-[40px] outline-none" type="text" name="phoneNumber" id="" placeholder="Enter Phone">
+            </label>
+
+            <div class="sel">
+                <div class="selrole">Role :</div>
+
+                <select name="role" id="register-role" class="reg-opt" >
+                    <option name="role"  value="student">student</option>
+                    <option name="role" value="staff">staff</option>
+                    <option name="role" value="visitor">visitor</option>
+                </select>
+            </div>
+
+            <button class="regbtn" id="btnId" onclick="reg()">Register</button>
+            <div class="ext">if user already exit <span ><a href="./signin.html" class="spn">sign in</a></span></div>
+           </div>
+        </div>
+
+    </main>
+</body>
+
+<script>
+    async function reg() {
+
+        const button = document.getElementById('btnId');
+        const originalText = button.textContent;
+
+        button.textContent = "Loading...";
+        button.disabled = true;
+
+    const userName = document.querySelector('.userName').value;
+    const userEmail = document.querySelector('.userEmail').value;
+    const userPhone = document.querySelector('.userPhone').value;
+    const role = document.querySelector('.reg-opt').value;
+
+    if(!userName){
+        alert('Name field is required');
+        button.textContent = originalText;
+        button.disabled = false;
+        return;
+    }else if(!userEmail){
+        alert('Email field is required');
+        button.textContent = originalText;
+        button.disabled = false;
+        return;
+    }else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userEmail)) {
+    alert('Please enter a valid email address');
+    button.textContent = originalText;
+    button.disabled = false;
+    return;
+    }
+    else if(!userPhone){
+        alert('Phone field is required');
+        button.textContent = originalText;
+        button.disabled = false;
+        return;
+    }else if (!/^\d{11}$/.test(userPhone)) {
+    alert('Please enter a valid 11-digit phone number');
+    button.textContent = originalText;
+    button.disabled = false;
+    return;
+}
+
+    try {
+        const response = await fetch('https://signing-app-cpwf.onrender.com/api/v1/register',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name:userName,
+                email:userEmail,
+                phoneNumber:userPhone,
+                role
+            }),
+        }
+    );
+
+    if(response.ok){
+        const data = await response.json();
+        // console.log(data);
+        await localStorage.setItem('register', JSON.stringify(data.user));
+        console.log(data.user);
+        button.textContent = originalText;
+        button.disabled = false;
+
+        window.location.href = 'regdetails.html';
+    }else{
+        const error = await response.json();
+        console.log(error, 'Error: Something went wrong');
+
+        button.textContent = originalText;
+        button.disabled = false;
+
+        alert(error.error);
+    }
+
+    } catch (error) {
+        console.log(error);
+        alert('Error: Something went wrong');
+    }
+}
+</script>
+</html>

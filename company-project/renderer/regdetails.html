@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
+    <link rel="stylesheet" href="../renderer/styles.css">
+    <title>REGISTERED USER</title>
+</head>
+<body>
+    <main>
+        <nav class="signnav">
+            <div class="txt">Toshconsult</div>
+            <div class="bar">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./signin.html">Signin</a></li>
+                    <li><a href="./signout.html">Signout</a></li>
+                </ul>
+                <button class="navbtn"><a href="./register.html">Register</a></button>
+            </div>
+        </nav>
+        <section class="data-bd">
+
+            <div class="data-cnt">Please thump-print to complete registration</div>
+
+            <div class="regid">
+                <div>User ID :</div>
+                <div class="data-link" id="uid">Loading....</div>
+            </div>
+
+
+            <label class="useid" for=""> <div>Enter user ID : </div>
+                <input class="data-inp" type="text" name="" id="userID" >
+            </label>
+             <button class="signbtn" id="btnId" onclick="next()">PROCEED</button>
+        </section>
+    </main>
+</body>
+
+<script>
+
+
+    async function regData() {
+
+        let reg = await localStorage.getItem("register");
+        reg =(JSON.parse(reg));
+        console.log(reg);
+
+        document.getElementById('uid').textContent = reg.userID || 'N/A';
+ 
+    } 
+    regData();
+   
+   async function next(){
+
+        const button = document.getElementById('btnId');
+        const originalText = button.textContent;
+
+        button.textContent = "Loading...";
+        button.disabled = true;
+
+        const userID = document.getElementById('userID').value;
+
+        if(!userID){
+            alert('Name field is required');
+            button.textContent = originalText;
+            button.disabled = false;
+            return;
+        }
+
+        let reg = await localStorage.getItem("register");
+           reg =(JSON.parse(reg));
+           console.log(reg);
+
+
+            if (reg && reg.userID === userID) {
+                button.textContent = originalText;
+                button.disabled = false;
+                window.location.href = 'UserReg.html';
+            } else {
+                button.textContent = originalText;
+                button.disabled = false;
+                alert('The entered User ID does not match ...');
+            }
+   }
+   </script>
+</html>

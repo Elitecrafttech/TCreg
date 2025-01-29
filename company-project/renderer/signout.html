@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
+    <link rel="stylesheet" href="../renderer/styles.css">
+    <title>SIGN OUT</title>
+</head>
+<body>
+    <main>
+        <nav class="signnav">
+            <div class="txt">Toshconsult</div>
+            <div class="bar">
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./signin.html">Signin</a></li>
+                    <li><a href="./signout.html">Signout</a></li>
+                </ul>
+                <button class="navbtn"><a href="./register.html">Register</a></button>
+            </div>
+        </nav>
+        <section class="data-bd">
+
+            <div class="data-cnt">Please thump-print to load your data</div>
+
+            <label class="useid" for=""> <div>Enter user ID : </div>
+                <input class="data-inp" type="text" name="" id="" >
+            </label>
+            <button class="signbtn" id="btnId" onclick="signout()">Sign Out User</button>
+        </section>
+
+    </main>
+</body>
+
+<script>
+    async function signout() {
+        const button = document.getElementById('btnId');
+        const originalText = button.textContent;
+
+        button.textContent = "Loading...";
+        button.disabled = true;
+
+    const userID = document.querySelector('.data-inp').value;
+
+    if(!userID){
+        alert('Name field is required');
+        button.textContent = originalText;
+        button.disabled = false;
+        return;
+    }
+
+    // console.log(userID);
+    
+    try {
+        const response = await fetch('https://signing-app-cpwf.onrender.com/api/v1/sign-out',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userID
+            }),
+        }
+    );
+    if(response.ok){
+        const data = await response.json();
+        console.log(data);
+        await localStorage.setItem('userout', JSON.stringify(data.user));
+
+        button.textContent = originalText;
+        button.disabled = false;
+
+        window.location.href = 'signoutData.html';
+    }else{
+        const error = await response.json();
+        console.log(error, "Error: cant sign out user");
+
+        button.textContent = originalText;
+        button.disabled = false;
+
+        alert(error.error);
+        
+    }
+ 
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+</script>
+
+
+
+
+</html>

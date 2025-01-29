@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="../renderer/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
+    <title>User-Reg</title>
+</head>
+<body>
+    <main>
+
+        <nav class="signnav">
+            <div class="txt">Toshconsult</div>
+            <div class="bar">
+                <ul>
+                    <li><a class="no-underline" href="./index.html">Home</a></li>
+                    <li><a class="no-underline" href="./signin.html">Signin</a></li>
+                    <li><a class="no-underline" href="./signout.html">Signout</a></li>
+                </ul>
+                <button class="navbtn"><a href="./register.html">Register</a></button>
+            </div>
+        </nav>
+
+
+        <div class="getdata">
+
+            <div class="userin">
+                <div>
+                    <p id="uid">Loading...</p>
+                    <p>has registered.</p>
+                </div>
+
+                <button class="prelo" onclick="load()">OKAY</button>
+            </div>
+        </div>
+
+    </main>
+    
+</body>
+
+<script>
+
+    function regname() {
+        let reg = localStorage.getItem("register")
+        reg =(JSON.parse(reg));
+        console.log(reg);
+
+        document.getElementById('uid').textContent = reg.userID || 'N/A';
+    }
+    regname()
+    
+    function load(){
+
+        const button = document.querySelector(".prelo");
+        const originalText = button.textContent;
+
+        button.textContent = "Loading...";
+        button.disabled = true;
+
+
+        localStorage.removeItem("register")
+
+
+        button.textContent = originalText;
+        button.disabled = false;
+
+        window.location.href = 'index.html';
+    }
+</script>
+</html>

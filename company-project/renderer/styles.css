@@ -1,0 +1,400 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* == General Apply design */
+main{
+    font-family: 'Roboto Slab', serif;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+.signnav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: #b8c8e3;
+    padding: 40px 30px 40px 30px;
+}
+.bar{
+    display: flex;
+    gap: 80px;
+    align-items: center;
+    justify-content: center;
+}
+.navbtn{
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 10px;
+    width: 10vw;
+    padding: 8px 0px;
+    font-size: 16px;
+}
+.navbtn:hover{
+  background-color: rgb(229, 231, 254);
+}
+
+
+
+/* == index html vanilla css*/
+.main-index{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 100px;
+}
+.top{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding-bottom: 40px;
+}
+.bg{
+    background-image: url("../renderer/images/access.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 160px;
+    border-radius: 5px;
+}
+.user-sign{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 150px;
+}
+.signin{
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    /* gap: 10px; */
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+}
+.signout{
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    /* gap: 10px; */
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+}
+.register{
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    /* gap: 10px; */
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+}
+/* select{
+    background-color: transparent;
+    border: none;
+    outline: none;
+} */
+
+/* select, option{
+    font-size: 15px;
+} */
+
+
+
+
+/* == regdetails html page vanilla css & signin*/
+.data-bd{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    height: 50vh;
+}
+.data-ctn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.data-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.data-inp{
+    border: 1px solid #d9d9d9;
+    padding: 5px 20px 5px 20px;
+    border-radius: 40px;
+    outline: none;
+}
+.regid{
+    display: flex;
+    gap: 10px;
+}
+
+
+
+
+/* == signin html vanilla css*/
+
+.txt{
+    font-size: 25px;
+}
+.bar ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+.useid{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.signbtn{
+    font-size: 25px;
+    color: black;
+    background-color: #d9d9d9;
+    padding: 5px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+.signbtn:hover{
+    background-color: #ede6e6;
+    color: #878787;
+}
+
+
+
+
+
+
+/* == signinData html page vanilla css*/
+
+.load-data{
+    /* border: 2px solid #d9d9d9; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    border: 2px solid black;
+    border-radius: 30px;
+    margin: 70px;
+    padding: 100px 0px;
+
+}
+/* .alldata{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+.indata{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.indata div{
+    display: flex;
+    gap: 50px;
+}
+.indata p{
+    font-size: 25px;
+}
+.load-data button{
+    font-size: 25px;
+    color: black;
+    background-color: #d9d9d9;
+    padding: 5px 40px;
+    border-radius: 8px;
+    border: none;
+    width: 30vw;
+}
+.load-data button:hover{
+    background-color: #ede6e6;
+    color: #878787;
+}
+
+
+
+
+
+
+
+
+
+
+/* == userIn html page vanilla css*/
+
+
+.getdata{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 100px;
+}
+.userin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4a4a4a;
+    padding: 50px;
+    width: 50vw;
+    gap: 130px;
+    border-radius: 10px;
+}
+.userin div{
+    display: flex;
+    gap: 10px;
+}
+.userin p{
+    font-size: 25px;
+    color: white;
+}
+.userin button{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    color: black;
+    background-color: #d9d9d9;
+    padding: 10px 40px;
+    border-radius: 8px;
+    width: 10vw;
+}
+.userin button:hover{
+    background-color: #ede6e6;
+    color: #878787;
+}
+
+
+
+
+
+/* == register html input vanilla css*/
+
+.main-reg{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 100px;
+}
+.sft{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: 600;
+    padding-bottom: 40px;
+    /* flex justify-center text-[50px] font-[600] pb-[40px] */
+}
+.reg-opt{
+    width: 27vw;
+    background-color: #d9d9d9;
+    border: #4a4a4a 2px solid;
+    border-radius: 40px;
+    padding: 10px 20px 10px 20px;
+}
+.reg-opt>option {
+    background-color: #b8e1ba;
+}
+.form{
+    align-items: center;
+    background-color: #4a4a4a;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+.form-div{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.namelab{
+    display: flex;
+    gap: 60px;
+}
+.namelab div{
+    font-size: 25px;
+    color: white;
+}
+.userName{
+    background-color: #d9d9d9;
+    padding: 10px 20px;
+    width: 27vw;
+    border-radius: 40px;
+    outline: none;
+}
+.emailab{
+    display: flex;
+    gap: 60px;
+}
+.emailab div{
+    font-size: 25px;
+    color: white;
+}
+.userEmail{
+    background-color: #d9d9d9;
+    padding: 10px 20px;
+    width: 27vw;
+    border-radius: 40px;
+    outline: none;
+}
+.phonelab{
+    display: flex;
+    gap: 60px;
+}
+.phonelab div{
+    font-size: 25px;
+    color: white;
+}
+.userPhone{
+    background-color: #d9d9d9;
+    padding: 10px 20px;
+    width: 27vw;
+    border-radius: 40px;
+    outline: none;
+}
+
+.sel{
+    display: flex;
+    gap: 83px;
+}
+.selrole{
+    font-size: 25px;
+    color: white;
+}
+.regbtn{
+    align-self: self-end;
+    font-size: 25px;
+    color: black;
+    background-color: #d9d9d9;
+    padding: 5px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.regbtn:hover{
+    background-color: #ede6e6;
+    color: #878787;
+}
+.ext{
+    display: flex;
+    color: white;
+    font-size: 20px;
+    gap: 10px;
+    align-self: self-end;
+}
+.spn{
+    color: #c3d2fa;
+}

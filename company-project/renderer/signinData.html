@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="../renderer/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
+    <title>USER SIGNIN DATA</title>
+</head>
+<body>
+    <main>
+
+        <nav class="signnav">
+            <div class="txt">Toshconsult</div>
+            <div class="bar">
+                <ul>
+                    <li><a class="no-underline" href="./index.html">Home</a></li>
+                    <li><a class="no-underline" href="./signin.html">Signin</a></li>
+                    <li><a class="no-underline" href="./signout.html">Signout</a></li>
+                </ul>
+                <button class="navbtn"><a href="./register.html">Register</a></button>
+            </div>
+        </nav>
+
+
+        <div class="load-data">
+                <!-- <div class="alldata"> -->
+
+
+                    <div class="indata">
+                        <div>
+                            <p>Name:</p>
+                            <p id="dataName">Loading...</p>
+                        </div>
+                        <div>
+                            <p>mobile:</p>
+                            <p id="num">Loading...</p>
+                        </div>
+                        <div>
+                            <p>Roles:</p>
+                            <p id="role">Loading...</p>
+                        </div>
+                        <div>
+                            <p>userID:</p>
+                            <p id="id">Loading...</p>
+                        </div>
+                        <div>
+                            <p>Time:</p>
+                            <p id="time">Loading...</p>
+                        </div>
+                    </div>
+
+
+                <!-- </div> -->
+            <button onclick="screen()">PROCEED TO</button>
+        </div>
+    </main>
+</body>
+
+
+<script>
+
+
+ function fetchData() {
+
+        let user = localStorage.getItem("user")
+        user =(JSON.parse(user));
+        console.log(user);
+        
+        
+        document.getElementById('dataName').textContent = user.name || 'N/A';
+        document.getElementById('num').textContent = user.phoneNumber || 'N/A';
+        document.getElementById('role').textContent = user.role || 'N/A';
+        document.getElementById('id').textContent = user.userID || 'N/A';
+        document.getElementById('time').textContent = user.dailyLogs[0].signInTime || 'N/A';
+}
+
+fetchData();
+
+function screen(){
+    window.location.href = 'userIn.html';
+}
+</script>
+</html>

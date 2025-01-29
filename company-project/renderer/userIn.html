@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="../renderer/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'>
+    <title>User-In</title>
+</head>
+<body>
+    <main>
+
+        <nav class="signnav">
+            <div class="txt">Toshconsult</div>
+            <div class="bar">
+                <ul>
+                    <li><a class="no-underline" href="./index.html">Home</a></li>
+                    <li><a class="no-underline" href="./signin.html">Signin</a></li>
+                    <li><a class="no-underline" href="./signout.html">Signout</a></li>
+                </ul>
+                <button class="navbtn"><a href="./register.html">Register</a></button>
+            </div>
+        </nav>
+
+
+        <div class="getdata">
+
+            <div class="userin">
+                <div>
+                    <p id="name">Loading...</p>
+                    <p> has signed in</p>
+                </div>
+
+                <button class="prelo" onclick="rmstorage()">OKAY</button>
+            </div>
+        </div>
+
+    </main>
+    
+</body>
+
+<script>
+
+function fetchName() {
+
+let user = localStorage.getItem("user")
+user =(JSON.parse(user));
+console.log(user);
+
+document.getElementById('name').textContent = user.name || 'N/A';
+
+}
+fetchName();
+
+function rmstorage() {
+
+    const button = document.querySelector(".prelo");
+    const originalText = button.textContent;
+
+    button.textContent = "Loading...";
+    button.disabled = true;
+
+    localStorage.removeItem("user")
+
+    button.textContent = originalText;
+    button.disabled = false;
+
+    window.location.href = 'index.html';
+}
+</script>
+</html>
